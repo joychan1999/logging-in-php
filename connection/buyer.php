@@ -64,19 +64,19 @@ if (isset($_POST['addnew'])) {
                     <button class="btn btn-success" type="button">
                         <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-squares-01/3/75-128.png" alt="search" style="width: 40px; height: 36px;">
                     </button>
-                        <?php 
+                        <?php
                             $id = $_SESSION['usedID'];
                             $_SESSION['count'] = 0;
                             $result = $store->countCart($id);
-                            if ($result==0) {
-                                $_SESSION['count']= 0;
-                            }else{
+                            if ($result == 0) {
+                                $_SESSION['count'] = 0;
+                            } else {
                                 $_SESSION['count'] = $result;
                             }
                                 ?>
                             <a href="cart.php" type="button" class="btn btn-success " style="float: left;">
                                 <img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/shopping-circle-green-256.png" alt="cart" style="width: 40px; height: 36px;">
-                                <span class="total-count" style="margin-left: 3px;"><?= $_SESSION['count']?></span>
+                                <span class="total-count" style="margin-left: 3px;"><?= $_SESSION['count']; ?></span>
                             </a>
                        
                 </div>

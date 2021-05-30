@@ -9,7 +9,6 @@ $id = $_SESSION['usedID'];
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $row = $store->userDetails($sql);
 
-
 ?>
 <link rel="stylesheet" href="../css/seller.css">
 <div id="navigationBar">
@@ -47,7 +46,7 @@ $row = $store->userDetails($sql);
                 <div class="container-fluid">
                     <div class="row" style="margin-left:50px">
                         <div class="col-sm-4">
-                            <img src="./images/joy.jpeg" class="rounded float-start" alt="profie" style="width: 100%;">
+                            <img src="../images/joy.jpeg" class="rounded float-start" alt="profie" style="width: 100%;">
                         </div>
                         <div class="col-sm-6">
                             <p class="lead">Username</p>
@@ -133,18 +132,18 @@ $row = $store->userDetails($sql);
                                 <div class="row">
                                     <?php
                                     $products = $store->sellerProducts('Orchid', $id);
-                                    foreach ($products as $item) {
-                                        ?>
+                                    foreach ($products as $item) { ?>
                                     <div class="column">
                                         <div class="card">
-                                            <img src="<?= $item['image_url'] ?>" alt="<?= $item['name']?>" class="image"
-                                                data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
-                                                data-bs-whatever="@mdo" />
-                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']?>"
+                                            <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
+                                                class="image" data-bs-toggle="modal"
+                                                data-bs-target="#<?= $item['name']; ?>" data-bs-whatever="@mdo" />
+                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                                 data-bs-whatever="@mdo" href="">
-                                                <h2><?= $item['name'] ?></h2>
+                                                <h2><?= $item['name']; ?></h2>
                                             </a>
-                                            <p class="price">$<?= $item['price'] ?></p>
+                                            <p class="price">$<?= $item['price']; ?></p>
+                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -161,15 +160,15 @@ $row = $store->userDetails($sql);
                                         ?>
                                     <div class="column">
                                         <div class="card">
-                                            <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>"
+                                            <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                                 class="image" data-bs-toggle="modal"
-                                                data-bs-target="#<?= $item['name'] ?>" data-bs-whatever="@mdo">
-                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                                data-bs-target="#<?= $item['name']; ?>" data-bs-whatever="@mdo">
+                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                                 data-bs-whatever="@mdo" href="">
-                                                <h2><?= $item['name'] ?></h2>
+                                                <h2><?= $item['name']; ?></h2>
                                             </a>
-                                            <p class="price">$<?= $item['price'] ?></p>
-                                        </div>
+                                            <p class="price">$<?= $item['price']; ?></p>
+                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button> </div>
                                     </div>
                                     <?php
                                     }?>
@@ -184,15 +183,15 @@ $row = $store->userDetails($sql);
                                         ?>
                                     <div class="column">
                                         <div class="card">
-                                            <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>"
+                                            <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                                 class="image" data-bs-toggle="modal"
-                                                data-bs-target="#<?= $item['name'] ?>" data-bs-whatever="@mdo">
-                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                                data-bs-target="#<?= $item['name']; ?>" data-bs-whatever="@mdo">
+                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                                 data-bs-whatever="@mdo" href="">
-                                                <h2><?= $item['name'] ?></h2>
+                                                <h2><?= $item['name']; ?></h2>
                                             </a>
-                                            <p class="price">$<?= $item['price'] ?></p>
-                                        </div>
+                                            <p class="price">$<?= $item['price']; ?></p>
+                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
                                     </div>
                                     <?php
                                     }?>
@@ -207,15 +206,15 @@ $row = $store->userDetails($sql);
                                         ?>
                                     <div class="column">
                                         <div class="card">
-                                            <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>"
+                                            <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                                 class="image" data-bs-toggle="modal"
-                                                data-bs-target="#<?= $item['name'] ?>" data-bs-whatever="@mdo">
-                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                                data-bs-target="#<?= $item['name']; ?>" data-bs-whatever="@mdo">
+                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                                 data-bs-whatever="@mdo" href="">
-                                                <h2><?= $item['name'] ?></h2>
+                                                <h2><?= $item['name']; ?></h2>
                                             </a>
-                                            <p class="price">$<?= $item['price'] ?></p>
-                                        </div>
+                                            <p class="price">$<?= $item['price']; ?></p>
+                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
                                     </div>
                                     <?php
                                     }?>
@@ -230,15 +229,15 @@ $row = $store->userDetails($sql);
                                         ?>
                                     <div class="column">
                                         <div class="card">
-                                            <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>"
+                                            <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                                 class="image" data-bs-toggle="modal"
-                                                data-bs-target="#<?= $item['name'] ?>" data-bs-whatever="@mdo">
-                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                                data-bs-target="#<?= $item['name']; ?>" data-bs-whatever="@mdo">
+                                            <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                                 data-bs-whatever="@mdo" href="">
-                                                <h2><?= $item['name'] ?></h2>
+                                                <h2><?= $item['name']; ?></h2>
                                             </a>
-                                            <p class="price">$<?= $item['price'] ?></p>
-                                        </div>
+                                            <p class="price">$<?= $item['price']; ?></p>
+                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
                                     </div>
                                     <?php
                                     }?>
@@ -261,15 +260,15 @@ $row = $store->userDetails($sql);
                                     $id = $_SESSION['usedID'];
                                     $_SESSION['count'] = 0;
                                     $result = $store->countTotalTransaction($id);
-                                    if ($result==0) {
-                                    $_SESSION['count']= 0;
-                                    }else{
-                                    $_SESSION['count'] = $result;
+                                    if ($result == 0) {
+                                        $_SESSION['count'] = 0;
+                                    } else {
+                                        $_SESSION['count'] = $result;
                                     }
                                     ?>
                                     <h1><img src="https://cdn4.iconfinder.com/data/icons/green-shopper/200/chart2.png"
                                             alt="total icon" style="width: 60px;">
-                                        <span><?=  $_SESSION['count']?></span>
+                                        <span><?=  $_SESSION['count']; ?></span>
                                     </h1>
                                 </center>
                             </div>
@@ -281,16 +280,16 @@ $row = $store->userDetails($sql);
                                     <?php
                                     $id = $_SESSION['usedID'];
                                     $_SESSION['count'] = 0;
-                                    $result = $store->countTransaction($id,'pending');
-                                    if ($result==0) {
-                                    $_SESSION['count']= 0;
-                                    }else{
-                                    $_SESSION['count'] = $result;
+                                    $result = $store->countTransaction($id, 'pending');
+                                    if ($result == 0) {
+                                        $_SESSION['count'] = 0;
+                                    } else {
+                                        $_SESSION['count'] = $result;
                                     }
                                     ?>
                                     <h1><img src="https://cdn2.iconfinder.com/data/icons/shipping-logistics-5/160/shipping-order-pending-256.png"
                                             alt="pending icon" style="width: 60px;">
-                                        <span><?= $_SESSION['count']?></span>
+                                        <span><?= $_SESSION['count']; ?></span>
                                     </h1>
                                 </center>
                             </div>
@@ -302,16 +301,16 @@ $row = $store->userDetails($sql);
                                     <?php
                                     $id = $_SESSION['usedID'];
                                     $_SESSION['count'] = 0;
-                                    $result = $store->countTransaction($id,'complete');
-                                    if ($result==0) {
-                                    $_SESSION['count']= 0;
-                                    }else{
-                                    $_SESSION['count'] = $result;
+                                    $result = $store->countTransaction($id, 'complete');
+                                    if ($result == 0) {
+                                        $_SESSION['count'] = 0;
+                                    } else {
+                                        $_SESSION['count'] = $result;
                                     }
                                     ?>
                                     <h1><img src="https://cdn0.iconfinder.com/data/icons/shopping-icons-part-1/512/shopping-12-256.png"
                                             alt="complete icon" style="width: 60px;">
-                                        <span><?=  $_SESSION['count']?></span>
+                                        <span><?=  $_SESSION['count']; ?></span>
                                     </h1>
                                 </center>
                             </div>
@@ -337,25 +336,22 @@ $row = $store->userDetails($sql);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
+                            <?php
                                 $id = $_SESSION['usedID'];
                                 $result = $store->transactionOrders($id);
-                                foreach ($result as $res) {
-                                    $_SESSION['buyerID'] = $res['buyerID']; ?>
+                                foreach ($result as $res) {?>
                             <tr>
-                                <td><?= $res['primaryId']?></td>
-
-
-                                <td>buyer name</td>
-                                <td>buyer number</td>
-                                <td><?= $res['productName']?></td>
-                                <td><?= $res['productPrice']?></td>
-                                <td><?= $res['productQuantity']?></td>
-                                <td><?= $res['subtotal']?></td>
-                                <td><?= $res['status']?></td>
-                                <td><?= $res['timeStamp']?></td>
+                                <td><?= $res['primaryId']; ?></td>
+                                <td><?= $res['buyerName']; ?></td>
+                                <td><?= $res['contactNum']; ?></td>
+                                <td><?= $res['productName']; ?></td>
+                                <td>$<?= $res['productPrice']; ?></td>
+                                <td><?= $res['productQuantity']; ?></td>
+                                <td>$<?= $res['subtotal']; ?></td>
+                                <td><?= $res['status']; ?></td>
+                                <td><?= $res['timeStamp']; ?></td>
                                 <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                        data-target="#exampleModalCenter">Update Status</button>
+                                        data-target="#exampleModalCenter" style="width: 80px;">Update Status</button>
                                 </td>
                             </tr>
                             <?php
@@ -368,115 +364,6 @@ $row = $store->userDetails($sql);
     </div>
 </div>
 
-<!-- --------------------PRODUCT INFORMATIONS ----------------------------- -->
-<div class="modal fade" id="cattleya" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Product Information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="container mb-5" style="background-color: white;">
-                        <div class="row">
-                            <div class="col">
-                                <div class="slideshow-container">
-                                    <div class="mySlides ">
-                                        <div class="numbertext">1 / 5</div>
-                                        <img src="./images/sampleimageforcont/p1.jfif" class="bigPhoto" />
-                                    </div>
-                                    <div class="mySlides ">
-                                        <div class="numbertext">2 / 5</div>
-                                        <img src="./images/sampleimageforcont/r1.jfif" class="bigPhoto" />
-                                    </div>
-                                    <div class="mySlides">
-                                        <div class="numbertext">3 / 5</div>
-                                        <img src="./images/sampleimageforcont/p2.jfif" class="bigPhoto" />
-                                    </div>
-                                    <div class="mySlides ">
-                                        <div class="numbertext">4 / 5</div>
-                                        <img src="./images/sampleimageforcont/r2.jfif" class="bigPhoto" />
-                                    </div>
-                                    <div class="mySlides">
-                                        <div class="numbertext">5 / 5</div>
-                                        <img src="./images/sampleimageforcont/p3.jfif" class="bigPhoto" />
-                                    </div>
-
-                                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                                </div>
-                                <div class="row justify-content-md-center mt-4 mb-3">
-                                    <img src="./images/sampleimageforcont/p1.jfif" class="smallpic"
-                                        onclick="currentSlide(1)" />
-                                    <img src="./images/sampleimageforcont/r1.jfif" class="smallpic"
-                                        onclick="currentSlide(2)" />
-                                    <img src="./images/sampleimageforcont/p2.jfif" class="smallpic"
-                                        onclick="currentSlide(3)" />
-                                    <img src="./images/sampleimageforcont/r2.jfif" class="smallpic"
-                                        onclick="currentSlide(4)" />
-                                    <img src="./images/sampleimageforcont/p3.jfif" class="smallpic"
-                                        onclick="currentSlide(5)" />
-                                </div>
-                            </div>
-                            <div class="col-6  mt-4">
-                                <h3 class="text-center" style="font-weight: 300;"><b> Red African Rose</b></h3>
-                                <h6 class="mt-5">Plant Description</h6>
-                                <div style="margin-right: 5%;">
-                                    <div class="mt-3 text-center">
-                                        <p class="productContent">
-                                            A rose is a woody perennial flowering plant of the genus Rosa,
-                                            in the family Rosaceae, or the flower it bears. There are over
-                                            three hundred species and tens of thousands of cultivars. They
-                                            form a group of plants that can be erect shrubs, climbing, or
-                                            trailing, with stems that are often armed with sharp prickles.
-                                        </p>
-                                    </div>
-                                    <div class="mt-5">
-                                        <span><b>Price: 120/pot</b></span>
-                                    </div>
-                                    <br>
-                                    <div class="mt-3" style="margin-left: 2%;">
-                                        <span style="font-size: medium;">100 pieces available </span>
-                                    </div><br>
-                                    <div class="row">
-                                        <div class="input-group" style="margin-right: 2%;margin-left: 3%;">
-                                            <div class="col-auto">
-                                                <a href="./relatedhtmlfiles/updateproduct.html"> <button type="button"
-                                                        class="btn btn-success btn-md">
-                                                        Update Details
-                                                    </button></a>
-
-                                                <button type="button" class="btn btn-danger btn-md">
-                                                    Delete Product
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="mt-5 text-center">
-                                            <p class="text-justify " style="font-size:15px">
-                                                <i><b>Note: </b> To our valued customer, we have set a
-                                                    maximum quantity of 4 pots per transaction since the box
-                                                    can't contain more than the specified number. As well as
-                                                    to avoid unnecessary damage during the transport. If you
-                                                    want to order more quantity, you have to set another
-                                                    transaction. Thank you and Happy Shopping Everyone.
-                                                </i>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div>
-</div>
-
-<?php
+    <?php
 include '../footer.php';
 ?>

@@ -3,26 +3,25 @@ session_start();
 include 'storing_con.php';
 $store = new Databases();
 
-
 if (isset($_POST['delete'])) {
     $id = $_SESSION['usedID'];
     $store->delItem($id, $_POST['id']);
 }
 
 if (isset($_POST['placeOrder'])) {
-    $orderId = $_SESSION['orderId']+=1;
+    $orderId = $_SESSION['orderId'];
     $id = $_SESSION['usedID'];
+    $username = $_SESSION['username'];
+    $contact = $_SESSION['contactNum'];
     $res = $store->getCartItems($id);
     foreach ($res as $row) {
-        $store->placeOrder($orderId, $id, $row['sellerID'], $row['productName'], $row['productImage'], $row['productQuantity'], $row['productPrice'], $row['subtotal'], 'pending');
+        $store->placeOrder($orderId, $id, $username, $contact, $row['sellerID'], $row['productName'], $row['productImage'], $row['productQuantity'], $row['productPrice'], $row['subtotal'], 'pending');
     }
 
     if ($store->delItemsPlace($id)) {
         echo '<script>alert("Successfully placed the order")</script>';
     }
     $_SESSION['orderId'] = $orderId;
-    
-
 }
 ?>
 <!DOCTYPE html>
@@ -109,17 +108,17 @@ img {
                                     $products = $store->getCartItems($id);
                                     foreach ($products as $row) {
                                         echo "<form action='' method='POST'>";
-                                        echo "<input type='hidden' value='" . $row['orderID'] . "' name='id' />";
-                                        echo "<tr>";
-                                        echo "<td> <img src=" . $row['productImage'] . "><br><center>" . $row['productName'] . "</center> </td>";
-                                        echo "<td>$" . $row['productPrice'] . "</td>";
-                                        echo "<td>" . $row['productQuantity'] . "</td>";
-                                        echo "<td>$" . $row['subtotal'] . "</td>";
+                                        echo "<input type='hidden' value='".$row['orderID']."' name='id' />";
+                                        echo '<tr>';
+                                        echo '<td> <img src='.$row['productImage'].'><br><center>'.$row['productName'].'</center> </td>';
+                                        echo '<td>$'.$row['productPrice'].'</td>';
+                                        echo '<td>'.$row['productQuantity'].'</td>';
+                                        echo '<td>$'.$row['subtotal'].'</td>';
 
                                         echo "<td><input type='submit' name='delete' value='Remove Item' class='btn btn-outline-danger' /></td>";
 
-                                        echo "</tr>";
-                                        echo "</form>";
+                                        echo '</tr>';
+                                        echo '</form>';
                                     }?>
 
                                 </tbody>
@@ -145,14 +144,13 @@ img {
                                         $id = $_SESSION['usedID'];
                                         $result = $store->getTotal($id);
                                         if ($result) {
-                                            $finalTotal = $result + 10;
-                                        ?>
+                                            $finalTotal = $result + 10; ?>
                                         <!-- showing subtotal -->
                                         <tr>
                                             <td>Subtotal</td>
                                             <td>
                                                 <input type="text" name="subtotal" id="subtotal" class="form-control"
-                                                    value='<?=$result?>' hidden> <b>$<?=$result?>
+                                                    value='<?=$result; ?>' hidden> <b>$<?=$result; ?>
                                                 </b>
                                             </td>
                                         </tr>
@@ -172,11 +170,12 @@ img {
                                             </td>
                                             <td>
                                                 <input type="text" name="total" id="total" class="form-control"
-                                                    value='<?=$finalTotal?>' hidden> <b>$<?=$finalTotal?>
+                                                    value='<?=$finalTotal; ?>' hidden> <b>$<?=$finalTotal; ?>
                                                 </b>
                                             </td>
                                         </tr>
-                                        <?php }?>
+                                        <?php
+                                        }?>
 
                                     </tbody>
                                 </table>

@@ -4,21 +4,22 @@ include 'header.php';
 include './connection/storing_con.php';
 $store = new Databases();
 
-
 if (isset($_POST['login'])) {
     $res = $store->login($_POST['username'], $_POST['password']);
     $_SESSION['usedID'] = $res['id'];
-    if ($res['type'] == "buyer") {
+    $_SESSION['username'] = $res['username'];
+    $_SESSION['contactNum'] = $res['contactNumber'];
+    if ($res['type'] == 'buyer') {
         header('Location: ./connection/buyer.php');
-    } else if ($res['type'] == "seller" && $res['status'] == 0) {
+    } elseif ($res['type'] == 'seller' && $res['status'] == 0) {
         header('Location: ./connection/seller.php');
-    } else if ($res['type'] == "seller" && $res['status'] == 1) {
+    } elseif ($res['type'] == 'seller' && $res['status'] == 1) {
         echo "<script>alert('Your submission as seller is not approved by the admin yet! Please wait until the admin will approve your submission!')</script>";
     }
 }//end of sign in
 
 if (isset($_POST['signup'])) {
-    if ($_POST['type'] == "seller") {
+    if ($_POST['type'] == 'seller') {
         $stat = 1;
     } else {
         $stat = 0;
@@ -114,17 +115,17 @@ if (isset($_POST['signup'])) {
                             <?php
                             $products = $store->select('products', 'Orchid');
                             foreach ($products as $item) {
-                            ?>
+                                ?>
                             <div class="column">
                                 <div class="card container-fluid">
-                                    <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="image"
+                                    <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>" class="image"
                                         data-bs-toggle="modal" data-bs-target="#cattleya" data-bs-whatever="@mdo">
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"
                                         href="">
-                                        <h2><?= $item['name'] ?></h2>
+                                        <h2><?= $item['name']; ?></h2>
                                     </a>
-                                    <p class="price">$<?= $item['price'] ?></p>
-                                    <a href="#" data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>"
+                                    <p class="price">$<?= $item['price']; ?></p>
+                                    <a href="#" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>"
                                         class="add-to-cart btn btn-outline-success">Add to cart</a>
                                 </div>
                             </div>
@@ -140,17 +141,17 @@ if (isset($_POST['signup'])) {
                             <?php
                             $products = $store->select('products', 'Daisy');
                             foreach ($products as $item) {
-                            ?>
+                                ?>
                             <div class="column">
                                 <div class="card">
-                                    <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="image"
+                                    <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>" class="image"
                                         data-bs-toggle="modal" data-bs-target="#cattleya" data-bs-whatever="@mdo">
-                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                         data-bs-whatever="@mdo" href="">
-                                        <h2><?= $item['name'] ?></h2>
+                                        <h2><?= $item['name']; ?></h2>
                                     </a>
-                                    <p class="price">$<?= $item['price'] ?></p>
-                                    <a href="#" data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>"
+                                    <p class="price">$<?= $item['price']; ?></p>
+                                    <a href="#" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>"
                                         class="add-to-cart btn btn-outline-success">Add to cart</a>
                                 </div>
                             </div>
@@ -166,17 +167,17 @@ if (isset($_POST['signup'])) {
                             <?php
                             $products = $store->select('products', 'Succulent');
                             foreach ($products as $item) {
-                            ?>
+                                ?>
                             <div class="column">
                                 <div class="card">
-                                    <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="image"
+                                    <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>" class="image"
                                         data-bs-toggle="modal" data-bs-target="#cattleya" data-bs-whatever="@mdo">
-                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                         data-bs-whatever="@mdo" href="">
-                                        <h2><?= $item['name'] ?></h2>
+                                        <h2><?= $item['name']; ?></h2>
                                     </a>
-                                    <p class="price">$<?= $item['price'] ?></p>
-                                    <a href="#" data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>"
+                                    <p class="price">$<?= $item['price']; ?></p>
+                                    <a href="#" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>"
                                         class="add-to-cart btn btn-outline-success">Add to cart</a>
                                 </div>
                             </div>
@@ -192,17 +193,17 @@ if (isset($_POST['signup'])) {
                             <?php
                             $products = $store->select('products', 'Rose');
                             foreach ($products as $item) {
-                            ?>
+                                ?>
                             <div class="column">
                                 <div class="card">
-                                    <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="image"
+                                    <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>" class="image"
                                         data-bs-toggle="modal" data-bs-target="#cattleya" data-bs-whatever="@mdo">
-                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                         data-bs-whatever="@mdo" href="">
-                                        <h2><?= $item['name'] ?></h2>
+                                        <h2><?= $item['name']; ?></h2>
                                     </a>
-                                    <p class="price">$<?= $item['price'] ?></p>
-                                    <a href="#" data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>"
+                                    <p class="price">$<?= $item['price']; ?></p>
+                                    <a href="#" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>"
                                         class="add-to-cart btn btn-outline-success">Add to cart</a>
                                 </div>
                             </div>
@@ -218,17 +219,17 @@ if (isset($_POST['signup'])) {
                             <?php
                             $products = $store->select('products', 'Other');
                             foreach ($products as $item) {
-                            ?>
+                                ?>
                             <div class="column">
                                 <div class="card">
-                                    <img src="<?= $item['image_url'] ?>" alt="<?= $item['name'] ?>" class="image"
+                                    <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>" class="image"
                                         data-bs-toggle="modal" data-bs-target="#cattleya" data-bs-whatever="@mdo">
-                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name'] ?>"
+                                    <a data-bs-toggle="modal" data-bs-target="#<?= $item['name']; ?>"
                                         data-bs-whatever="@mdo" href="">
-                                        <h2><?= $item['name'] ?></h2>
+                                        <h2><?= $item['name']; ?></h2>
                                     </a>
-                                    <p class="price">$<?= $item['price'] ?></p>
-                                    <a href="#" data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>"
+                                    <p class="price">$<?= $item['price']; ?></p>
+                                    <a href="#" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>"
                                         class="add-to-cart btn btn-outline-success">Add to cart</a>
                                 </div>
                             </div>
