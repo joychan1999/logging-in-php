@@ -3,6 +3,10 @@ session_start();
 include '../header.php';
 include 'storing_con.php';
 $store = new Databases();
+$id = $_SESSION['usedID'] ;
+if($id == ""){
+    header('Location: ../index.php');
+}
 
 $id = $_SESSION['usedID'];
 // //fetch seller data
@@ -28,7 +32,7 @@ $row = $store->userDetails($sql);
 
         <div class="dropdown-content">
             <a data-bs-toggle="modal" data-bs-target="#personalInfo" data-bs-whatever="@mdo">Personal Profile</a>
-            <a href="../index.php">Log Out</a>
+            <a href="logout.php">Log Out</a>
         </div>
     </div>
 </div>

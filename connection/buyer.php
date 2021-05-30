@@ -2,7 +2,12 @@
 session_start();
 include 'storing_con.php';
 $store = new Databases();
+
 $id = $_SESSION['usedID'];
+
+if($id == ""){
+    header('Location: ../index.php');
+}
 // //fetch user data
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $row = $store->userDetails($sql);
@@ -48,7 +53,7 @@ if (isset($_POST['addnew'])) {
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#personalInfo" data-bs-whatever="@mdo">Personal Info</a></li>
                     <li><a class="dropdown-item" href="orders.php">My Orders</a></li>
-                    <li><a class="dropdown-item" href="../index.php">Log out</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                 </ul>
             </li>
         </ul>
