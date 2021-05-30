@@ -1,0 +1,207 @@
+#navigationBar{
+  box-shadow: 0px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: lightgreen;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  /* top: 100px; */
+}
+.dropdown-menu {
+  background-color: lightgreen;
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-top-left-radius: 5px;
+  border-top-color:rgb(60, 158, 60);
+  transition:0.5s;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.tab-pane{
+margin-left: 330px;
+margin-top: 150px;
+}
+.imgicon{
+  width: 20px;
+}
+
+.logo{
+  padding: 20px;
+  margin-top: 0%;
+}
+
+.h1{
+font-family: Cursive;
+font-style: normal;
+font-weight: normal;
+text-decoration: blink;
+text-transform: none;
+color: darkgreen;
+}
+
+#secnav{
+  font-size:40px; 
+  margin-top: 60px; 
+  margin-left: 5%;
+  width: 60%;
+}
+
+a{
+text-decoration: none;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+
+/* Style the counter cards */
+.card {
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-top-left-radius: 5px;
+  border-top-color:rgb(86, 231, 86);
+  box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 10px;
+  text-align: center;
+  background-color: whitesmoke;
+  height: 240px;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+.card.grow {
+  transition: all 0.5s ease-in-out;
+}
+.card:hover {
+  transform: scale(0.9);
+
+}
+
+
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.image{
+  height: 100px;
+  width: 100%;
+}
+
+h2{
+  font-size: 15px;
+}
+
+/*LOG IN*/
+.center {
+margin: auto;
+width: 40%;
+border: 1px solid black;
+padding: 10px;
+margin-top: 5%;
+}
+.center2 {
+margin: auto;
+padding: 10px;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.input-container {
+display: -ms-flexbox; /* IE10 */
+display: flex;
+width: 100%;
+margin-bottom: 15px;
+}
+
+.icon {
+padding: 13px;
+color: white;
+min-width: 50px;
+text-align: center;
+}
+
+.input-field {
+width: 100%;
+padding: 10px;
+outline: none;
+}
+
+.input-field:focus {
+border: 2px solid dodgerblue;
+}
+
+/* Set a style for the login button */
+#login {
+
+color: white;
+padding: 15px 20px;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+}
+
+#login:hover {
+opacity: 1;
+}
+.imgcontainer {
+text-align: center;
+}
+
+.avatar{
+width: 90px;
+border-radius: 90%;
+}
+
+.psw{
+color: black;
+}
+
+
+
+
+/*   cart */
+
+
+/*  Help Center*/
+#helpnavigationBar{
+background-color: lightgreen;
+top: 0;
+}
+
+.helpbodyContent{
+margin-top: 10px;
+}
+
+.helplogo{
+width: 70px;
+}
+
+.helph1{
+font-size: 50px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.helph2{
+font-size: x-large;
+margin-top: -15px;
+font-family: cursive;
+color: darkgreen;
+}
