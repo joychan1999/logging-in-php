@@ -27,18 +27,6 @@ include '../header.php';
 <h1 style="padding: 10px; ">Categories</h1>
 <div class="helpbodyContent ">
     <div class="row ">
-        <div class="col-3 ">
-            <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="home">Account Safety & Others</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Orders and Payments</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Selling and Billing</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Shipping and Delivery</a>
-            </div>
-        </div>
-
-
-
-
         <div class="col">
             <div class="container " style="border-left: 1px solid gray; ">
 
