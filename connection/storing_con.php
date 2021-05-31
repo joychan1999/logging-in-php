@@ -47,9 +47,9 @@ class Databases
     //end of login
 
     //USER SIGNUP
-    public function signup($username, $password, $email, $contactNumber, $type, $status)
+    public function signup($username, $password, $email, $contactNumber, $type, $status,$profile)
     {
-        $sql = "INSERT INTO users(username, password,email,contactNumber,type,status) VALUES('".$username."','".$password."','".$email."','".$contactNumber."','".$type."','".$status."')";
+        $sql = "INSERT INTO users(username, password,email,contactNumber,type,status,profile) VALUES('".$username."','".$password."','".$email."','".$contactNumber."','".$type."','".$status."','".$profile."')";
         $query = $this->con->query($sql);
         if ($query) {
             return $query;
@@ -330,10 +330,13 @@ class Databases
         } else {
             return false;
         }
-    }// end of product info function
+    }
+
+    // end of product info function
 
     //DELETING PRODUCT
-    public function del($userID, $itemID){
+    public function del($userID, $itemID)
+    {
         $sql = "DELETE FROM products WHERE sellerID='".$userID."' AND id = '".$itemID."'";
         $query = $this->con->query($sql);
         if ($query) {
@@ -341,22 +344,25 @@ class Databases
         } else {
             echo $this->con->error;
         }
-    }//end of delete function
+    }
 
+    //end of delete function
 
     //UPDATING PRODUCT
-    public function updatePro($prodID, $sellerID, $prodName, $prodPrice, $prodDes, $prodStock,$prodImage){
+    public function updatePro($prodID, $sellerID, $prodName, $prodPrice, $prodDes, $prodStock, $prodImage)
+    {
         $sql = "UPDATE products SET name='".$prodName."',price='".$prodPrice."', description='".$prodDes."', stock='".$prodStock."',image_url='".$prodImage."' WHERE sellerID='".$sellerID."' AND id = '".$prodID."'";
         $query = $this->con->query($sql);
         if ($query) {
             return $query;
         } else {
             echo $this->con->error;
-        } 
+        }
     }
 
     //FETCHING ALL THE PRODUCTS
-    public function all(){
+    public function all()
+    {
         $array = [];
         $query = 'SELECT * FROM products';
         $result = mysqli_query($this->con, $query);
@@ -367,12 +373,11 @@ class Databases
         return $array;
     }
 
-    
     //COUNT TOTAL BUYER
     public function Users($type)
     {
         $total;
-        $sql = "SELECT count(*) as total from users where type='" . $type . "'";
+        $sql = "SELECT count(*) as total from users where type='".$type."'";
         $result = mysqli_query($this->con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $total = $row['total'];
@@ -385,7 +390,7 @@ class Databases
     public function products()
     {
         $total;
-        $sql = "SELECT count(*) as total from products";
+        $sql = 'SELECT count(*) as total from products';
         $result = mysqli_query($this->con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $total = $row['total'];
@@ -398,7 +403,7 @@ class Databases
     public function sellers($type)
     {
         $array = [];
-        $query = "SELECT * FROM users WHERE type='" . $type . "'";
+        $query = "SELECT * FROM users WHERE type='".$type."'";
         $result = mysqli_query($this->con, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             $array[] = $row;
@@ -407,19 +412,19 @@ class Databases
         return $array;
     }
 
-     //UPDATING STATUS
-     public function updateStat($sellerID, $status)
-     {
-         $sql = "UPDATE users SET status= '".$status."' WHERE id='" . $sellerID . "'";
-         $query = $this->con->query($sql);
-         if ($query) {
-             return $query;
-         } else {
-             echo $this->con->error;
-         }
-     }
+    //UPDATING STATUS
+    public function updateStatus($orderID, $status)
+    {
+        $sql = "UPDATE orders SET status= '".$status."' WHERE primaryId='".$orderID."'";
+        $query = $this->con->query($sql);
+        if ($query) {
+            return $query;
+        } else {
+            echo $this->con->error;
+        }
+    }
 
-       //FETCHING ALL THE SELLERS
+    //FETCHING ALL THE SELLERS
     public function unaccept()
     {
         $array = [];
@@ -432,28 +437,30 @@ class Databases
         return $array;
     }
 
-     //COUNT TOTAL NOTIFS
-     public function notif()
-     {
-         $total;
-         $sql = "SELECT count(*) as total from users where type='seller' AND status=1";
-         $result = mysqli_query($this->con, $sql);
-         while ($row = mysqli_fetch_assoc($result)) {
-             $total = $row['total'];
-         }
- 
-         return $total;
-     }
+    //COUNT TOTAL NOTIFS
+    public function notif()
+    {
+        $total;
+        $sql = "SELECT count(*) as total from users where type='seller' AND status=1";
+        $result = mysqli_query($this->con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $total = $row['total'];
+        }
 
-      //DECLINE SELLER
+        return $total;
+    }
+
+    //DECLINE SELLER
     public function decline($userID)
     {
-        $sql = "DELETE FROM users WHERE id='" . $userID . "'";
+        $sql = "DELETE FROM users WHERE id='".$userID."'";
         $query = $this->con->query($sql);
         if ($query) {
             return $query;
         } else {
             echo $this->con->error;
         }
-    } //end of decline function
+    }
+
+    //end of decline function
 }

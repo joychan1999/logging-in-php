@@ -26,7 +26,7 @@ if (isset($_POST['signup'])) {
     } else {
         $stat = 0;
     }
-    $sign = $store->signup($_POST['username'], $_POST['password'], $_POST['email'], $_POST['contactNumber'], $_POST['type'], $stat);
+    $sign = $store->signup($_POST['username'], $_POST['password'], $_POST['email'], $_POST['contactNumber'], $_POST['type'], $stat,$_POST['profile']);
     if ($sign) {
         echo '<script>alert("signed up successfully, please log in your account!")</script>';
     }
@@ -322,6 +322,13 @@ if (isset($_POST['signup'])) {
                                 <option value="seller">seller</option>
                                 <option value="buyer">buyer</option>
                             </select>
+                        </div>
+                        <div class="input-group mb-3 input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="material-icons"
+                                        style="font-size:35px;color:rgb(51, 196, 7)">account_circle</i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Profile URL" name="profile">
                         </div>
                         <center>
                             <p class="lead">Do you have an account?<a data-bs-toggle="modal" data-bs-target="#login"

@@ -367,7 +367,7 @@ if (isset($_POST['addnew'])) {
                     <div class="container-fluid">
                         <div class="row" style="margin-left:50px">
                             <div class="col-sm-4">
-                                <img src="./images/profile_icon.jfif" class="rounded float-start" alt="profie">
+                                <img src="<?= $row['profile']; ?>" class="rounded float-start" alt="profie" style="width: 100%;">
                             </div>
                             <div class="col-sm-6">
                                 <p class="lead">Username</p>
@@ -375,29 +375,21 @@ if (isset($_POST['addnew'])) {
 
                                     <input type="text" class="edit-inputUser form-control w-50"
                                         value="<?= $row['username']; ?>" disabled>
-                                    <button class="btn-editUser btn btn-outline-primary" type="button">Edit</button>
                                 </div>
                                 <p class="lead">Password</p>
                                 <div class="input-group" style="margin-bottom:15px;">
                                     <input type="password" class="edit-inputPass form-control w-50"
                                         value="<?= $row['password']; ?>" disabled>
-                                    <button class="btn-editPass btn btn-outline-primary" type="button">Edit</button>
-                                </div>
-                                <p class="lead">Retype Password</p>
-                                <div class="input-group" style="margin-bottom:15px;">
-                                    <input type="password" class="edit-inputRePass form-control w-50" value="" disabled>
                                 </div>
                                 <p class="lead">Email Address</p>
                                 <div class="input-group" style="margin-bottom:15px;">
                                     <input type="text" class="edit-inputAdd form-control w-50"
                                         value="<?= $row['email']; ?>" disabled>
-                                    <button class="btn-editAdd btn btn-outline-primary" type="button">Edit</button>
                                 </div>
                                 <p class="lead">Contact Number</p>
                                 <div class="input-group" style="margin-bottom:15px;">
                                     <input type="text" class="edit-inputCon form-control w-50"
                                         value="<?= $row['contactNumber']; ?>" disabled>
-                                    <button class="btn-editCon btn btn-outline-primary" type="button">Edit</button>
                                 </div>
                             </div>
                         </div>

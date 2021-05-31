@@ -3,8 +3,8 @@ session_start();
 include '../header.php';
 include 'storing_con.php';
 $store = new Databases();
-$id = $_SESSION['usedID'] ;
-if($id == ""){
+$id = $_SESSION['usedID'];
+if ($id == '') {
     header('Location: ../index.php');
 }
 
@@ -12,6 +12,15 @@ $id = $_SESSION['usedID'];
 // //fetch seller data
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $row = $store->userDetails($sql);
+
+if (isset($_POST['processBtn'])) {
+    $store->updateStatus($_POST['processingId'], $_POST['processing']);
+    echo "<script> alert('Status updated successfully!')</script>";
+}
+if (isset($_POST['completeBtn'])) {
+    $store->updateStatus($_POST['completeId'], $_POST['complete']);
+    echo "<script> alert('Status updated successfully!')</script>";
+}
 
 ?>
 <link rel="stylesheet" href="../css/seller.css">
@@ -50,7 +59,7 @@ $row = $store->userDetails($sql);
                 <div class="container-fluid">
                     <div class="row" style="margin-left:50px">
                         <div class="col-sm-4">
-                            <img src="../images/joy.jpeg" class="rounded float-start" alt="profie" style="width: 100%;">
+                            <img src="<?= $row['profile']; ?>" class="rounded float-start" alt="profie" style="width: 100%;">
                         </div>
                         <div class="col-sm-6">
                             <p class="lead">Username</p>
@@ -97,8 +106,6 @@ $row = $store->userDetails($sql);
         <label for="tab1">My Products</label>
         <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" />
         <label for="tab2">Orders</label>
-        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles" />
-        <label for="tab3">Dunkles Bock</label>
 
         <div class="tab-panels">
             <!-- ----------------------------TAB 1 FOR TAB INFOS (MANIPULATE THE PRODUCTS)------------------------------------- -->
@@ -148,7 +155,7 @@ $row = $store->userDetails($sql);
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
                                             <button class="btn btn-outline-success"><a
-                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                                    href="productInfo.php?id=<?= $item['id']; ?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -174,7 +181,7 @@ $row = $store->userDetails($sql);
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
                                             <button class="btn btn-outline-success"><a
-                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                                    href="productInfo.php?id=<?= $item['id']; ?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -199,7 +206,7 @@ $row = $store->userDetails($sql);
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
                                             <button class="btn btn-outline-success"><a
-                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                                    href="productInfo.php?id=<?= $item['id']; ?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -224,7 +231,7 @@ $row = $store->userDetails($sql);
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
                                             <button class="btn btn-outline-success"><a
-                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                                    href="productInfo.php?id=<?= $item['id']; ?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -249,7 +256,7 @@ $row = $store->userDetails($sql);
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
                                             <button class="btn btn-outline-success"><a
-                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                                    href="productInfo.php?id=<?= $item['id']; ?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -352,7 +359,10 @@ $row = $store->userDetails($sql);
                             <?php
                                 $id = $_SESSION['usedID'];
                                 $result = $store->transactionOrders($id);
-                                foreach ($result as $res) {?>
+                                foreach ($result as $res) {
+                                   
+                                        ?>
+
                             <tr>
                                 <td><?= $res['primaryId']; ?></td>
                                 <td><?= $res['buyerName']; ?></td>
@@ -363,30 +373,27 @@ $row = $store->userDetails($sql);
                                 <td>$<?= $res['subtotal']; ?></td>
                                 <td><?= $res['status']; ?></td>
                                 <td><?= $res['timeStamp']; ?></td>
-                                <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                        data-target="#exampleModal" style="width: 80px;">Update Status</button>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <div class="d-flex flex-row">
+                                        <div>
+                                            <form method="post">
+                                                <input type="hidden" name="processing" value="processing">
+                                                <input type="hidden" value="<?= $res['primaryId']; ?>"
+                                                    name="processingId">
+                                                <button type="submit" class="btn btn-info" name="processBtn"
+                                                    style="width:100px;">Processing</button>
+                                            </form>
+                                        </div>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
+                                        <div style="margin-left:5px">
+                                            <form method="post">
+                                                <input type="hidden" name="complete" value="complete">
+                                                <input type="hidden" value="<?= $res['primaryId']; ?>"
+                                                    name="completeId">
+                                                <button type="submit" class="btn btn-primary" name="completeBtn"
+                                                    style="width:90px;">Complete</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>
@@ -400,6 +407,8 @@ $row = $store->userDetails($sql);
         </div>
     </div>
 </div>
+
+}
 
 <?php
 include '../footer.php';
