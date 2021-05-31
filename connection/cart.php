@@ -9,19 +9,17 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['placeOrder'])) {
-    $orderId = $_SESSION['orderId'];
     $id = $_SESSION['usedID'];
     $username = $_SESSION['username'];
     $contact = $_SESSION['contactNum'];
     $res = $store->getCartItems($id);
     foreach ($res as $row) {
-        $store->placeOrder($orderId, $id, $username, $contact, $row['sellerID'], $row['productName'], $row['productImage'], $row['productQuantity'], $row['productPrice'], $row['subtotal'], 'pending');
+        $store->placeOrder( $id, $username, $contact, $row['sellerID'], $row['productName'], $row['productImage'], $row['productQuantity'], $row['productPrice'], $row['subtotal'], 'pending');
     }
 
     if ($store->delItemsPlace($id)) {
         echo '<script>alert("Successfully placed the order")</script>';
     }
-    $_SESSION['orderId'] = $orderId;
 }
 ?>
 <!DOCTYPE html>

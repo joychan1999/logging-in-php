@@ -161,9 +161,9 @@ class Databases
     //end of delete function
 
     //PLACING ORDER
-    public function placeOrder($orderID, $userID, $username, $contact, $sellerID, $productName, $productImage, $productQuantity, $productPrice, $subtotal, $status)
+    public function placeOrder($userID, $username, $contact, $sellerID, $productName, $productImage, $productQuantity, $productPrice, $subtotal, $status)
     {
-        $sql = "INSERT INTO orders(orderID,buyerID,buyerName,contactNum,sellerID,productName, productImage,productQuantity,productPrice,subtotal,status) VALUES('".$orderID."','".$userID."','".$username."','".$contact."','".$sellerID."','".$productName."','".$productImage."','".$productQuantity."','".$productPrice."','".$subtotal."','".$status."')";
+        $sql = "INSERT INTO orders(buyerID,buyerName,contactNum,sellerID,productName, productImage,productQuantity,productPrice,subtotal,status) VALUES('".$userID."','".$username."','".$contact."','".$sellerID."','".$productName."','".$productImage."','".$productQuantity."','".$productPrice."','".$subtotal."','".$status."')";
         $query = $this->con->query($sql);
         if ($query) {
             return $query;

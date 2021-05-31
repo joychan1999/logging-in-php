@@ -147,7 +147,8 @@ $row = $store->userDetails($sql);
                                                 <h2><?= $item['name']; ?></h2>
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
-                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                            <button class="btn btn-outline-success"><a
+                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
                                         </div>
                                     </div>
                                     <?php
@@ -172,7 +173,9 @@ $row = $store->userDetails($sql);
                                                 <h2><?= $item['name']; ?></h2>
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
-                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button> </div>
+                                            <button class="btn btn-outline-success"><a
+                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                        </div>
                                     </div>
                                     <?php
                                     }?>
@@ -195,7 +198,9 @@ $row = $store->userDetails($sql);
                                                 <h2><?= $item['name']; ?></h2>
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
-                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
+                                            <button class="btn btn-outline-success"><a
+                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                        </div>
                                     </div>
                                     <?php
                                     }?>
@@ -218,7 +223,9 @@ $row = $store->userDetails($sql);
                                                 <h2><?= $item['name']; ?></h2>
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
-                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
+                                            <button class="btn btn-outline-success"><a
+                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                        </div>
                                     </div>
                                     <?php
                                     }?>
@@ -241,7 +248,9 @@ $row = $store->userDetails($sql);
                                                 <h2><?= $item['name']; ?></h2>
                                             </a>
                                             <p class="price">$<?= $item['price']; ?></p>
-                                            <button class="btn btn-outline-success"><a href="productInfo.php?id=<?= $item['id']?>">view</a></button></div>
+                                            <button class="btn btn-outline-success"><a
+                                                    href="productInfo.php?id=<?= $item['id']?>">view</a></button>
+                                        </div>
                                     </div>
                                     <?php
                                     }?>
@@ -355,7 +364,31 @@ $row = $store->userDetails($sql);
                                 <td><?= $res['status']; ?></td>
                                 <td><?= $res['timeStamp']; ?></td>
                                 <td><button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                        data-target="#exampleModalCenter" style="width: 80px;">Update Status</button>
+                                        data-target="#exampleModal" style="width: 80px;">Update Status</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <?php
@@ -368,6 +401,6 @@ $row = $store->userDetails($sql);
     </div>
 </div>
 
-    <?php
+<?php
 include '../footer.php';
 ?>
