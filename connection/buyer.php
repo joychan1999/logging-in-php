@@ -86,7 +86,7 @@ if (isset($_POST['addnew'])) {
             <li class="nav-item" id="secnav">
                 <div class="input-group">
                     <input id="input" type="text" class="form-control" placeholder="Search Plants">
-                    <button class="btn btn-success" type="button">
+                    <button class="btn btn-success" onclick="myFunction()" type="button">
                         <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-squares-01/3/75-128.png"
                             alt="search" style="width: 40px; height: 36px;">
                     </button>
@@ -115,7 +115,9 @@ if (isset($_POST['addnew'])) {
         <div class="row">
             <div class="col-3" style="position: fixed;margin-top: 160px;">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action  active" id="list-home-list" data-bs-toggle="list"
+                    <a class="list-group-item list-group-item-action  active" id="list-all-list" data-bs-toggle="list"
+                        href="#list-all" role="tab" aria-controls="orchids">All Plants</a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
                         href="#list-orchids" role="tab" aria-controls="orchids">Orchids</a>
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
                         href="#list-daisy" role="tab" aria-controls="daisy">Daisies</a>
@@ -132,8 +134,44 @@ if (isset($_POST['addnew'])) {
 
             <div class="col" style="margin-right:50px, width:100%">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-orchids" role="tabpanel"
-                        aria-labelledby="list-home-list">
+                    <div class="tab-pane fade show active" id="list-all" role="tabpanel"
+                        aria-labelledby="list-all-list">
+                        <h1 style="color: purple;">All</h1>
+                        <hr style="color: purple;">
+                        <div class="row" id="myItems">
+                            <?php
+                            $products = $store->all();
+                            foreach ($products as $prod) {
+                                ?>
+                            <div class="column">
+                                <div class="card">
+                                    <form method="POST">
+                                        <center>
+                                            <input type="text" name="id" value="<?= $prod['id']; ?>" hidden>
+                                            <input type="text" name="sellerID" value="<?= $prod['sellerID']; ?>" hidden>
+                                            <input type="text" name="image" value="<?= $prod['image_url']; ?>" hidden>
+                                            <input type="text" name="name" value="<?= $prod['name']; ?>" hidden>
+                                            <input type="text" name="price" value="<?= $prod['price']; ?>" hidden>
+                                            <a href="info.php?id=<?=$prod['id']?>&sellerID=<?= $prod['sellerID']?>"><img
+                                                    src="<?= $prod['image_url']; ?>" alt="<?= $prod['name']; ?>"
+                                                    style="width: 100px; height:100px;">
+
+                                                <h2><?= $prod['name']; ?></h2>
+                                            </a>
+                                            <a class="price" style="color:black">$<?= $prod['price']; ?></a><br>
+                                            Quantity:<input type="number" name="quantity" style="width: 35px" value="0">
+                                            <button type="submit" name="addnew"
+                                                class="add-to-cart btn btn-outline-success">Add to cart</button>
+                                        </center>
+                                    </form>
+                                </div>
+                            </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show " id="list-orchids" role="tabpanel" aria-labelledby="list-home-list">
                         <h1 style="color: purple;">ORCHIDS</h1>
                         <hr style="color: purple;">
                         <div class="row">
@@ -150,8 +188,9 @@ if (isset($_POST['addnew'])) {
                                             <input type="text" name="image" value="<?= $prod['image_url']; ?>" hidden>
                                             <input type="text" name="name" value="<?= $prod['name']; ?>" hidden>
                                             <input type="text" name="price" value="<?= $prod['price']; ?>" hidden>
-                                            <a href="info.php?id=<?=$prod['id']?>&sellerID=<?= $prod['sellerID']?>"><img src="<?= $prod['image_url']; ?>"
-                                                    alt="<?= $prod['name']; ?>" style="width: 100px; height:100px;">
+                                            <a href="info.php?id=<?=$prod['id']?>&sellerID=<?= $prod['sellerID']?>"><img
+                                                    src="<?= $prod['image_url']; ?>" alt="<?= $prod['name']; ?>"
+                                                    style="width: 100px; height:100px;">
 
                                                 <h2><?= $prod['name']; ?></h2>
                                             </a>
@@ -292,7 +331,8 @@ if (isset($_POST['addnew'])) {
                                             <input type="text" name="name" value="<?= $prod['name']; ?>" hidden>
                                             <input type="text" name="price" value="<?= $prod['price']; ?>" hidden>
                                             <a href="info.php?id=<?=$prod['id']?>&sellerID=<?= $prod['sellerID']?>">
-                                            <img src="<?= $prod['image_url']; ?>" alt="<?= $prod['name']; ?>" style="width:100px;height:100px;">
+                                                <img src="<?= $prod['image_url']; ?>" alt="<?= $prod['name']; ?>"
+                                                    style="width:100px;height:100px;">
                                                 <h2><?= $prod['name']; ?></h2>
                                             </a>
                                             <a class="price" style="color:black">$<?= $prod['price']; ?></a><br>
@@ -313,29 +353,6 @@ if (isset($_POST['addnew'])) {
         </div>
     </div>
 
-
-    <!---------------------- MODAL CART------------------------- -->
-    <!-- <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="show-cart table">
-
-                    </table>
-                    <div>Total price: $<span class="total-cart"></span></div>
-                </div>
-                <div class="modal-footer">
-                    <button class="clear-cart btn btn-danger" style="float: left;">Clear Cart</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Order now</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!----------------    PERSONAL INFO MODAL  ------------------->
 
@@ -393,7 +410,24 @@ if (isset($_POST['addnew'])) {
             </div>
         </div>
     </div>
-    <script src="./index.js"></script>
+
+    <script>
+    function myFunction() {
+        var input, filter, cards, cardContainer, h5, title, i;
+        input = document.getElementById("input");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myItems");
+        cards = cardContainer.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector("h2");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+    </script>
 
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

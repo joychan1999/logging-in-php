@@ -354,4 +354,16 @@ class Databases
             echo $this->con->error;
         } 
     }
+
+    //FETCHING ALL THE PRODUCTS
+    public function all(){
+        $array = [];
+        $query = 'SELECT * FROM products';
+        $result = mysqli_query($this->con, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $array[] = $row;
+        }
+
+        return $array;
+    }
 }
