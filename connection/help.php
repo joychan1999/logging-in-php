@@ -24,9 +24,13 @@ include '../header.php';
 </div>
 
 
-<h1 style="padding: 10px; ">Categories</h1>
+<h1 style="padding: 10px; "></h1>
 <div class="helpbodyContent ">
     <div class="row ">
+
+
+
+
         <div class="col">
             <div class="container " style="border-left: 1px solid gray; ">
 
@@ -233,17 +237,11 @@ include '../header.php';
 
 <div id="footer ">
     <hr>
-    <p style="float:left; margin-top: 20px;margin-left: 10px; ">&copy; 2021 GreenPlanthom. All Rights Reserved
+    <p style="float:left; margin-top: 20px;margin-left: 10px; text-align:center; ">&copy; 2021 GreenPlanthom. All Rights Reserved
     <p>
-    <div style="float: right; margin-right: 10px; ">
-        <a href="# " class="fa fa-facebook "></a>
-        <a href="# " class="fa fa-twitter "></a>
-        <a href="# " class="fa fa-google "></a>
-        <a href="# " class="fa fa-instagram "></a>
-        <p style="color: black;font-family: arial; "></p>
-    </div>
+    
 </div>
 
 <?php
 include '../footer.php';
-?>F
+?>

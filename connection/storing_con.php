@@ -424,6 +424,7 @@ class Databases
         }
     }
 
+    
     //FETCHING ALL THE SELLERS
     public function unaccept()
     {
