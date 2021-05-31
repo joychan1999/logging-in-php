@@ -15,6 +15,8 @@ if (isset($_POST['login'])) {
         header('Location: ./connection/seller.php');
     } elseif ($res['type'] == 'seller' && $res['status'] == 1) {
         echo "<script>alert('Your submission as seller is not approved by the admin yet! Please wait until the admin will approve your submission!')</script>";
+    } elseif ($res['type'] == 'admin') {
+        header('Location: ./connection/admin.php');
     }
 }//end of sign in
 
@@ -120,7 +122,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card container-fluid">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>
@@ -146,7 +148,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card container-fluid">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>
@@ -171,7 +173,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>
@@ -196,7 +198,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>
@@ -221,7 +223,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>
@@ -246,7 +248,7 @@ if (isset($_POST['signup'])) {
                                 ?>
                             <div class="column">
                                 <div class="card">
-                                    <a href="prodInfo.php?id=<?=$item['id']?>&sellerID=<?= $item['sellerID']?>">
+                                    <a href="prodInfo.php?id=<?=$item['id']; ?>&sellerID=<?= $item['sellerID']; ?>">
                                         <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>"
                                             style="width:100px; height:100px;">
                                         <h2><?= $item['name']; ?></h2>

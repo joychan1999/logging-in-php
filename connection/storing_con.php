@@ -366,4 +366,94 @@ class Databases
 
         return $array;
     }
+
+    
+    //COUNT TOTAL BUYER
+    public function Users($type)
+    {
+        $total;
+        $sql = "SELECT count(*) as total from users where type='" . $type . "'";
+        $result = mysqli_query($this->con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $total = $row['total'];
+        }
+
+        return $total;
+    }
+
+    //COUNT TOTAL PRODUCTS
+    public function products()
+    {
+        $total;
+        $sql = "SELECT count(*) as total from products";
+        $result = mysqli_query($this->con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $total = $row['total'];
+        }
+
+        return $total;
+    }
+
+    //FETCHING ALL THE SELLERS
+    public function sellers($type)
+    {
+        $array = [];
+        $query = "SELECT * FROM users WHERE type='" . $type . "'";
+        $result = mysqli_query($this->con, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $array[] = $row;
+        }
+
+        return $array;
+    }
+
+     //UPDATING STATUS
+     public function updateStat($sellerID, $status)
+     {
+         $sql = "UPDATE users SET status= '".$status."' WHERE id='" . $sellerID . "'";
+         $query = $this->con->query($sql);
+         if ($query) {
+             return $query;
+         } else {
+             echo $this->con->error;
+         }
+     }
+
+       //FETCHING ALL THE SELLERS
+    public function unaccept()
+    {
+        $array = [];
+        $query = "SELECT * FROM users WHERE type='seller' AND status = 1";
+        $result = mysqli_query($this->con, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $array[] = $row;
+        }
+
+        return $array;
+    }
+
+     //COUNT TOTAL NOTIFS
+     public function notif()
+     {
+         $total;
+         $sql = "SELECT count(*) as total from users where type='seller' AND status=1";
+         $result = mysqli_query($this->con, $sql);
+         while ($row = mysqli_fetch_assoc($result)) {
+             $total = $row['total'];
+         }
+ 
+         return $total;
+     }
+
+      //DECLINE SELLER
+    public function decline($userID)
+    {
+        $sql = "DELETE FROM users WHERE id='" . $userID . "'";
+        $query = $this->con->query($sql);
+        if ($query) {
+            return $query;
+        } else {
+            echo $this->con->error;
+        }
+    } //end of decline function
 }
