@@ -9,19 +9,19 @@ if ($id == "") {
 }
 
 if (isset($_POST['block'])) {
-  if ($_POST['curStat'] == 1) {
+  if ($_POST['curStat'] == 'inactive') {
     echo '<script>alert("Cant block! Account is already Inactive!")</script>';
   } else {
-    if ($store->updateStat($_POST['sellerID'], 1)) {
+    if ($store->updateStat($_POST['sellerID'], 'inactive')) {
       echo '<script>alert("Status updated!")</script>';
     };
   }
 }
 if (isset($_POST['unblock'])) {
-  if ($_POST['curStat'] == 0) {
+  if ($_POST['curStat'] == 'active') {
     echo '<script>alert("Account is already active!")</script>';
   } else {
-    if ($store->updateStat($_POST['sellerID'], 0)) {
+    if ($store->updateStat($_POST['sellerID'], 'active')) {
       echo '<script>alert("Status updated!")</script>';
     };
   }
@@ -59,17 +59,6 @@ if(isset($_POST['decline'])){
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown" id="logout">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              My Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
           <li class="nav-item" id="users">
             <a class="nav-link" href="logout.php">Log Out</a>
           </li>

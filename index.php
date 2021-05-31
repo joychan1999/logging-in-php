@@ -11,9 +11,9 @@ if (isset($_POST['login'])) {
     $_SESSION['contactNum'] = $res['contactNumber'];
     if ($res['type'] == 'buyer') {
         header('Location: ./connection/buyer.php');
-    } elseif ($res['type'] == 'seller' && $res['status'] == 0) {
+    } elseif ($res['type'] == 'seller' && $res['status'] == 'active') {
         header('Location: ./connection/seller.php');
-    } elseif ($res['type'] == 'seller' && $res['status'] == 1) {
+    } elseif ($res['type'] == 'seller' && $res['status'] == 'inactive') {
         echo "<script>alert('Your submission as seller is not approved by the admin yet! Please wait until the admin will approve your submission!')</script>";
     } elseif ($res['type'] == 'admin') {
         header('Location: ./connection/admin.php');
@@ -22,9 +22,9 @@ if (isset($_POST['login'])) {
 
 if (isset($_POST['signup'])) {
     if ($_POST['type'] == 'seller') {
-        $stat = 1;
+        $stat = 'inactive';
     } else {
-        $stat = 0;
+        $stat = 'active';
     }
     $sign = $store->signup($_POST['username'], $_POST['password'], $_POST['email'], $_POST['contactNumber'], $_POST['type'], $stat,$_POST['profile']);
     if ($sign) {

@@ -428,7 +428,7 @@ class Databases
     public function unaccept()
     {
         $array = [];
-        $query = "SELECT * FROM users WHERE type='seller' AND status = 1";
+        $query = "SELECT * FROM users WHERE type='seller' AND status = 'inactive'";
         $result = mysqli_query($this->con, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             $array[] = $row;
@@ -441,7 +441,7 @@ class Databases
     public function notif()
     {
         $total;
-        $sql = "SELECT count(*) as total from users where type='seller' AND status=1";
+        $sql = "SELECT count(*) as total from users where type='seller' AND status='inactive'";
         $result = mysqli_query($this->con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $total = $row['total'];
@@ -461,6 +461,17 @@ class Databases
             echo $this->con->error;
         }
     }
-
     //end of decline function
+
+     //UPDATING STATUS
+     public function updateStat($sellerID, $status)
+     {
+         $sql = "UPDATE users SET status= '".$status."' WHERE id='" . $sellerID . "'";
+         $query = $this->con->query($sql);
+         if ($query) {
+             return $query;
+         } else {
+             echo $this->con->error;
+         }
+     }
 }
